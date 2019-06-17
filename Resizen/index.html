@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Resizen</title>
+        <meta charset="utf-8">
+        <link rel="icon" type="image/png" href="./imagenes/ico.png" />
+        <link href="./default.css" rel="stylesheet" type="text/css">
+        <!--<link href="https://fonts.googleapis.com/css?family=Noto+Sans+TC" rel="stylesheet">-->
+        <link href="https://fonts.googleapis.com/css?family=Lobster" rel="stylesheet">
+        <script src="jquery-3.3.1.min.js"></script>
+        <script type="application/x-javascript">
+            function cargarfa(){
+                $("#cuerpo").css("opacity",0.4);
+                setTimeout("familiar()",2000);
+            }
+            function familiar(){
+                window.location.assign("loginfamiliar.html");
+            }
+            function cargarpro(){
+                $("#cuerpo").css("opacity",0.4);
+                setTimeout("profesional()",2000);
+            }
+            function profesional(){
+                window.location.assign("loginprofesional.html");
+            }
+        </script>
+    </head>
+    <body>
+        <div id="cuerpo">
+            <div id="cabecera">
+                <div id="acceso">
+                    <a href="#" onclick="cargarfa()" style="text-decoration: none;color:rgb(21, 233, 162);padding: 20px;">Acceso Familias</a>
+                    <a href="#" onclick="cargarpro()" style="text-decoration: none;color: rgb(21, 233, 162);">Acceso Profesionales</a>
+                </div>
+            </div>
+            <div id="titulo">
+                <img width="250px" height="75x" src="./imagenes/recorte.JPG">
+                <p>Al servicio del mayor</p>
+            </div>
+        </div>
+    </body>
+</html>

@@ -1,0 +1,50 @@
+body{
+    width: 99%;
+    height: 635px;
+}
+.en:hover{
+    width: 95px;
+    padding: 5px;
+    color: #8383bd;
+}
+#arbol{
+    float: left;
+    width: 25%;
+    background-image: url("./imagenes/vertical.jpg");
+    height: 100%;
+    background-repeat: repeat-y;
+    margin-left: 5%;
+}
+#datos{
+    float: left;
+    width: 65%;
+    height: 65px;
+    margin-bottom: 5px;
+    /*margin-left: 10px;*/
+    border:5px solid rgb(52, 180, 183);
+}
+#visualizar{
+    float: left;
+    /*margin-left: 10px;*/
+    width: 65%;
+    height: 555px;
+    border:5px solid rgb(52, 180, 183);
+}
+#logo{
+    width: 25%;
+    margin-left: 20%;
+}
+#serviciosfamiliar{   
+    width: 90px;
+    margin-top: 50px;
+    margin-left: 25%;
+}
+#serviciosprofesional{
+    width: 90px;
+    margin-top: 50px;
+    margin-left: 25%;
+}
+p{
+    font-family: 'Noto Sans TC', sans-serif;
+    color: rgb(52, 180 , 183);
+}

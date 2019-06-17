@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <link rel="icon" type="image/png" href="./imagenes/ico.png" />
+        <link href="./default2.css" rel="stylesheet" type="text/css">
+        <style>
+            .salir{
+                padding-left:10px;
+            }
+            #load{
+                text-align: center;
+                height: 200px;
+                background-image: url('./imagenes/load.gif');
+                background-size: 150px 150px;
+                background-repeat: no-repeat;
+                background-position: center;
+                color: rgb(52,180,183);
+            }
+            p{
+                color: rgb(6, 187, 187);
+            }  
+            body{
+                background-color: rgb(117,189,188);
+            }
+            input[type="button"]{
+                background-color: white;
+                color: rgb(60,150,160);
+            }
+            .loader {
+                position: fixed;
+                left: 0px;
+                top: 0px;
+                width: 100%;
+                height: 100%;
+                z-index: 9999;
+                background: url('./imagenes/load.gif') 50% 50% no-repeat rgb(249,249,249);
+                opacity: .9;
+                visibility: visible;
+            }
+        </style>
+        <script src="jquery-3.3.1.min.js"></script>
+        <script type="application/x-javascript">
+            $(document).ready(function(){
+                $("#entrar").click(logeo);
+            })
+            function logeo(){
+                var usuario = $("#usuario").val();
+                var pass = $("#pass").val();
+                $('#login').html("<div id='load'><p>Cargando...</p></<div>");
+                var peticion = $.ajax({
+                    url: "loginprofesional.php",
+                    type: "POST",
+                    async: true,
+                    data: {
+                        usuario:usuario,
+                        pass:pass
+                    },
+                    success: function(data){
+                        if(data=="si"){
+                            alert("Usuario o contraseña invalidos");
+                            window.location.assign("loginprofesional.html");
+                        }
+                        else{
+                            var nombre = data;
+                            localStorage.setItem("logeado",nombre);
+                            var nom = localStorage.getItem("logeado");
+                            /*alert(nom);*/
+                            window.location.assign("principalprofesional.html");
+                        }
+                    }
+                })
+            }
+            function cargar(){
+                setTimeout("desaparecer()",2000);
+            }
+            function desaparecer(){
+                $(".loader").css("visibility","hidden");
+            }
+        </script>
+    </head>
+    <body onload="cargar()">
+        <div id="cuerpo">
+            <div id="fondo">
+                <div id="barra">
+                    <div id="logo">
+                        <img src="./imagenes/logo2.JPG" width="350px" height="200px" >
+                    </div>
+                    <div id="login">
+                        <h3>RESIZEN ACCESO PROFESIONALES</h3>
+                        <form method="#">
+                            Usuario: <input type="text" id="usuario" name="usuario"><br><br>
+                            Password: <input type="password" id="pass" name="pass"><br><br>
+                            <input type="button" name="acceso" value="Entrar" id="entrar"><br><br>
+                        </form>
+                        <a href="index.html" style="text-decoration: none;color:rgb(117, 189, 188);">Salir<img class="salir" src="./imagenes/saliricono.png"></a>
+                    </div>
+                    <div class="loader"></div>
+                </div>
+            </div>
+        </div>
+    </body>
+</html>

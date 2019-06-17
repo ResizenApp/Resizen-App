@@ -1,0 +1,38 @@
+p{
+    color: rgb(52,180,183);
+}
+body{
+    text-align: center;
+    background-image: url("./imagenes/fondo_horizontal.jpg");
+    background-repeat: inherit;
+    width: 95%;
+    height: 95%;
+}
+#barra{
+    background-image: url("./imagenes/vertical.jpg");
+    height: 640px;
+    background-repeat: repeat-y;
+    margin-left: 42%;
+}
+#login{
+    text-align: center;
+    width: 318px;
+    padding: 25px;
+    background-color: white;
+    position: absolute;
+    top: 200px;
+    left: 37%;
+    border: 2px solid rgb(117,189,188);
+    color: rgb(52,180,183);
+}
+#logo{
+    position: absolute;
+    left: 25px;
+    top: 25px;
+}
+h3{
+    background: -webkit-linear-gradient(left top, rgb(0, 255, 200),  rgb(117,189,188));
+    background: linear-gradient(to bottom right, rgb(0, 225, 255),  rgb(117,189,188));
+    -webkit-background-clip: text;  
+    -webkit-text-fill-color: transparent; 
+}

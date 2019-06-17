@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Resizen Principal</title>
+        <meta charset="utf-8">
+        <link rel="icon" type="image/png" href="./imagenes/ico.png" />
+        <link href="./default3.css" rel="stylesheet" type="text/css">
+        <link href="https://fonts.googleapis.com/css?family=Noto+Sans+TC" rel="stylesheet">
+        <style>
+            .salida{
+                position: absolute;
+                top:10px;
+                right: 20px;;
+            }
+            table tr {
+                text-align: center;
+            }
+            #entrada{
+                text-align: center;
+            }
+            
+            #load{
+                text-align: center;
+                height: 455px;
+                background-image: url('./imagenes/load.gif');
+                background-size: 100px 100px;
+                background-repeat: no-repeat;
+                background-position: center;
+            }
+            button{
+                background-color: white;
+                color: rgb(60,150,160);
+            }
+            .color{
+                color: rgb(52, 180 , 183);
+            }
+        </style>
+        <script src="jquery-3.3.1.min.js"></script>
+        <script src="profesional.js" type="application/x-javascript"></script>
+    </head>
+   <body>
+       <div id="arbol">
+            <div id="logo">
+                <img src="./imagenes/logo2.JPG" width="150px" height="75px" >
+            </div>
+            <div id="serviciosprofesional">
+                <p class="en" onclick="residentes()" id="residentes">Residentes</p>
+                <p class="en" onclick="dietas()" id="dietas">Dietas</p>
+                <p class="en" onclick="actividades()" id="actividades">Agenda de Actividades</p>
+                <p class="en" onclick="clinica()" id="clinica">Clinica</p>
+                <p class="en" onclick="incidencias()"id="incidencias">Incidencias</p>
+                <p class="en" onclick="informes()" id="informes">Informes</p>
+                <p class="en" onclick="valoraciones()" id="valoraciones">Valoraciones</p>
+                <p class="en" onclick="evolutivos()" id="evolutivos">Evolutivos</p>
+                <p class="en" onclick="usuarios()" id="usuarios">Usuarios</p>
+            </div>
+       </div>
+       <div id="datos">
+            <center class="color">Profesional logeado: <p id="contenido"></p></center>
+            <a onclick="salir()"><img class="salida" src="./imagenes/saliricono.png"></a>
+       </div>
+       <script>
+            var nom = localStorage.getItem("logeado");
+            document.getElementById('contenido').innerHTML = nom;
+       </script>
+       <div id="visualizar">
+           <div id="entrada">
+               <p>Bienvenido a Resizen</p>
+           </div>
+       </div>
+   </body> 
+</html>

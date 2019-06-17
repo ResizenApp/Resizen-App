@@ -1,0 +1,61 @@
+body{
+    width: 95%;
+    background-image: url("./imagenes/felices.PNG");
+    background-repeat: no-repeat;
+    background-size: 1400px 600px;
+    background-size:cover;
+}
+
+
+h1{
+    font-size: 72px;  
+    background: -webkit-linear-gradient(left top,  rgb(0, 255, 200),  rgb(117,189,188));
+    background: linear-gradient(to bottom right,  rgb(0, 255, 200),  rgb(117,189,188));
+    -webkit-background-clip: text;  
+    -webkit-text-fill-color: transparent;  
+    
+}
+h3{
+    font-size: 72px;  
+    background: -webkit-linear-gradient(left top, rgb(0, 255, 200),  rgb(117,189,188));
+    background: linear-gradient(to bottom right,  rgb(0, 255, 200),  rgb(117,189,188));
+    -webkit-background-clip: text;  
+    -webkit-text-fill-color: transparent;  
+}
+#cabecera{
+    background-color: rgb(243, 246, 247);
+    margin-bottom: 10px;
+}
+/*#fondo{
+    width: 100%;
+    background-image: url("./imagenes/felices.PNG");
+    background-repeat: no-repeat;
+    background-size: 1400px 600px;
+    background-size:cover;
+}*/
+#titulo{
+    width: 800px;
+    height: 580px;
+    text-align: center;
+}
+a{
+    font-size: 20px;
+    font-family: 'Noto Sans TC', sans-serif;
+    background: -webkit-linear-gradient(left top, rgb(0, 255, 200),  rgb(117,189,188));
+    background: linear-gradient(to bottom right,  rgb(0, 255, 200),  rgb(117,189,188));
+    -webkit-background-clip: text;  
+    -webkit-text-fill-color: transparent;  
+}
+#acceso{
+    margin-left: 850px;
+    background-color:  rgb(243, 246, 247);
+}
+p{
+    font-size: 40px;
+    /*font-family: 'Sofia', cursive;*/
+    font-family: 'Lobster', cursive;
+    background: -webkit-linear-gradient(left top, rgb(0, 255, 200),  rgb(117,189,188));
+    background: linear-gradient(to bottom right,  rgb(0, 255, 200),  rgb(117,189,188));
+    -webkit-background-clip: text;  
+    -webkit-text-fill-color: transparent;  
+}
