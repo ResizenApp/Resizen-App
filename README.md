@@ -1,2 +1,0 @@
-# Resizen-App
-# Resizen-App
