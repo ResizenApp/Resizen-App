@@ -1,3 +1,6 @@
+<?php
+    session_start();
+?>
 <!DOCTYPE html>
 <html>
     <head>
@@ -31,7 +34,7 @@
                 require("conexion.php");
                 $con = conexion("resizen");
                 $id = $_POST['id'];
-                $consulta = "select residentes.nombre,residentes.apellidos,valoraciones.id_valoracion,valoraciones.tipo,valoraciones.fecha from valoraciones inner join residentes on residentes.id_residente='$id';";
+                $consulta = "select residentes.nombre,residentes.apellidos,valoraciones.id_valoracion,valoraciones.tipo,valoraciones.fecha from valoraciones inner join residentes on residentes.id_residente=valoraciones.id_residente where residentes.id_residente='$id';";
                 $result = mysqli_query($con,$consulta);
                 $col = mysqli_num_rows($result);
                 if($col>0){
@@ -41,6 +44,7 @@
                             echo("<th>Nombre</th>");
                             echo("<th>Tipo</th>");
                             echo("<th>Fecha</th>");
+                            echo("<th>Acciones</th>");
                         echo("</tr>");
                     for($i=0;$i<$col;$i++){
                     $datos = mysqli_fetch_array($result);
@@ -52,17 +56,23 @@
                         echo("</tr>");
                     }
                     echo("
-                        </table>
-                        <button onclick='atrasmostrarvaloraciones()'>Atras</button>
-                        </center><br><br>
+                        </table><br><br>
+                        <button onclick='atrasmostrarvaloraciones()'>Atras</button>");
+                        if($_SESSION['categoria']!="Auxiliar de enfermeria"){
+                            echo("<button onclick='crearvaloraciones(\"". $id ."\")'>Crear</button>");
+                        }
+                        echo("</center><br><br>
                     ");
                 }
                 else{
                     echo("
                         <center>
                             <p>El residente no tiene valoraciones que mostrar</p>
-                            <button onclick='atrasmostrarvaloraciones()'>Atras</button>
-                        </center>
+                            <button onclick='atrasmostrarvaloraciones()'>Atras</button>");
+                            if($_SESSION['categoria']!="Auxiliar de enfermeria"){
+                                echo("<button onclick='crearvaloraciones(\"". $id ."\")'>Crear</button>");
+                            }
+                        echo("</center>
                     ");
                 }
             ?>

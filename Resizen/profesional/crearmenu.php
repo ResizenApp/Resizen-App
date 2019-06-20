@@ -9,13 +9,13 @@
             }
         </script>
         <style>
-            body{
+            #formulario{
+                height:555px;
+                padding-left:25px;
+                overflow-y: scroll;
                 background-color: rgb(204,232,255);
             }
-            #formulario{
-                padding-left:25px;
-            }
-            input[type="submit"]{
+            input[type="button"]{
                 background-color: white;
                 color: rgb(60,150,160);
             }
@@ -24,11 +24,12 @@
     <body>
         <div id='formulario'>
             <?php
+                sleep(1);
                 session_start();
                 require("conexion.php");
                 $con = conexion("resizen");
                 mysqli_set_charset($con, 'utf8');
-                $tipo = $_GET['tipodieta'];
+                $tipo = $_POST['tipodieta'];
                 echo("
                 <center><p>Crear menu dieta: ".$tipo." </p></center>
                 <form action='crearmenu.php?tipodieta=".$tipo."' method='post'>
@@ -46,37 +47,9 @@
                     <textarea name='mer' id='mer' cols='50' rows='3' required></textarea><br><br>
                     <p>Cena</p>
                     <textarea name='cen' id='cen' cols='50' rows='3' required></textarea><br><br>
-                    <input type='submit' name='crear' id='crear' value='Crear'>
-                </form>
-            <?php
-                if(isset($_POST['crear'])){
-                    $dieta = $_POST['tipo'];
-                    $fecha = $_POST['fecha'];
-                    $des = $_POST['des'];
-                    $alm = $_POST['alm'];
-                    $com = $_POST['com'];
-                    $mer = $_POST['mer'];
-                    $cen = $_POST['cen'];
-                    $consulta = "insert into dietamenu (tipodieta,fecha,desayuno,almuerzo,comida,merienda,cena) values ('$dieta','$fecha','$des','$alm','$com','$mer','$cen');";
-                    $result = mysqli_query($con,$consulta);
-                    if($result){
-                        echo("
-                            <script>
-                                alert('Menu creado correctamente');
-                                window.opener.location.reload('principalprofesional.html');
-                                self.close();
-                            </script>
-                        ");
-                    }
-                    else{
-                        echo("
-                            <script>
-                                alert('El menu no se ha creado correctamente, intentelo de nuevo');
-                            </script>
-                        ");
-                    }
-                }
-            ?>
+                    <input type='button' name='crear' id='crear' value='Crear' onclick='crearmenuext()'>
+                </form><br><br>
+                <button onclick='atrasdieta()'>Atras</button><br><br>
         </div>   
     </body>
 </html>

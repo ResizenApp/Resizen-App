@@ -2,26 +2,22 @@
 <html>
     <head>
         <meta charset='UTF-8'>
-        <script src="jquery-3.3.1.min.js"></script>
-        <script type="application/x-javascript">
-            function salir(){
-                window.close("crearevolutivo.php");
-            }
-        </script>
         <style>
-            body{
-                background-color: rgb(204,232,255);
-            }
             #formulario{
                 height:555px;
                 padding-left:25px;
+                overflow-y: scroll;
+                background-color: rgb(204,232,255);
             }
             input[type="number"]{
                 width:50px;
             }
-            input[type="submit"]{
+            input[type="button"]{
                 background-color: white;
                 color: rgb(60,150,160);
+            }
+            #dni{
+                visibility:hidden;
             }
         </style>
     </head>
@@ -29,11 +25,12 @@
         <div id='formulario'>
             <h4>Evolutivo diario</h4>
             <?php
+                sleep(1);
                 session_start();
                 require("conexion.php");
                 $con = conexion("resizen");
                 mysqli_set_charset($con, 'utf8');
-                $idres = $_GET['idresidente'];
+                $idres = $_POST['idresidente'];
                 $idpro = $_SESSION['idprofesional'];
                 $consulta = "select nombre,apellidos from residentes where id_residente='$idres';";
                 $consulta2 = "select nombre,categoria from profesional where id_profesional='$idpro';";
@@ -42,8 +39,9 @@
                 $datos = mysqli_fetch_array($result);
                 $datos2 = mysqli_fetch_array($result2);
                 echo("
-                <form action='crearevolutivo.php?idresidente=".$idres."' method='post'>
-                Residente: <input type='text' name='nom' id='nom' value='".$datos['nombre'] . " " . $datos['apellidos']."' readonly='readonly'><br><br>
+                <form action='#' method='post'>
+                Residente: <input type='text' name='nom' id='nom' value='".$datos['nombre'] . " " . $datos['apellidos']."' readonly='readonly'>
+                <input type='text' name='dni' id='dni' value='".$idres."'><br><br>
                 Profesional: <input type='text' name='nomp' id='nomp' value='".$datos2['nombre'] . "' readonly='readonly'>
                 Categoria: <input type='text' name='cat' id='cat' value='". $datos2['categoria']."' readonly='readonly'><br><br>
                 ");
@@ -88,40 +86,11 @@
                     }
                 ?>
                 </select><br><br>
-                <input type='submit' name='crear' id='crear' value='Guardar'><br><br>
+                <input type='button' name='crear' id='crear' value='Guardar' onclick='crearevolutivoext()'>
+                <?php
+                    echo("<button onclick='atrasdetalle(\"".$idres."\")'>Atras</button><br><br>");
+                ?>
             </form>
-            <?php
-                if(isset($_POST['crear'])){
-                    $idres = $idres;
-                    $idpro = $_SESSION['idprofesional'];
-                    $fec = $_POST['fecha'];
-                    $turno = $_POST['turno'];
-                    $actv = $_POST['actv'];
-                    $inci = $_POST['inci'];
-                    $pis = $_POST['pis'];
-                    $caca = $_POST['caca'];
-                    $ncaca = $_POST['ncaca'];
-                    $cpos = $_POST['cpos'];
-                    $consulta = "insert into evolutivos (id_residente,id_profesional,fecha,turno,actividades,incidencias,diuresis,deposiciones,num_depo,cambiosposturales) values ('$idres','$idpro','$fec','$turno','$actv','$inci',$pis,'$caca',$ncaca,'$cpos');";
-                    $result = mysqli_query($con,$consulta);
-                    if($result){
-                        echo("
-                            <script>
-                                alert('Evolutivo guardado');
-                                window.opener.location.reload('principalprofesional.html');
-                                self.close();
-                            </script>
-                        ");
-                    }
-                    else{
-                        echo("
-                            <script>
-                                alert('No se ha podido guardar, intentelo de nuevo');
-                            </script>
-                        ");
-                    }
-                }
-            ?>
         </div>   
     </body>
 </html>

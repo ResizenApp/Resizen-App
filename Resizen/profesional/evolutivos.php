@@ -30,7 +30,7 @@
             sleep(1);
             require("conexion.php");
             $con = conexion("resizen");
-            $consulta = "select id_residente,nombre,apellidos from residentes";
+            $consulta = "select id_residente,nombre,apellidos from residentes order by apellidos asc";
             $result = mysqli_query($con,$consulta);
             $col = mysqli_num_rows($result);
             if($col>0){
@@ -47,8 +47,7 @@
                         echo("<td>" . $datos['nombre'] . "</td>");
                         echo("<td>" . $datos['apellidos'] . "</td>");
                         echo("<td>
-                            <button onclick='verevolutivos(\"". $datos['id_residente'] ."\")'>Ver</button>
-                            <button onclick='crearevolutivos(\"". $datos['id_residente'] ."\")'>Crear</button>
+                            <button onclick='verevolutivos(\"". $datos['id_residente'] ."\")'>Mostrar</button>
                         </td>");
                     echo("</tr>");
                 }

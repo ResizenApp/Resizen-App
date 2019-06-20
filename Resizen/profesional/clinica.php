@@ -30,7 +30,7 @@
                 session_start();
                 require("conexion.php");
                 $con = conexion("resizen");
-                $consulta = "select * from residentes;";
+                $consulta = "select * from residentes order by apellidos asc;";
                 $result = mysqli_query($con,$consulta);
                 $col = mysqli_num_rows($result);
                 if($col>0){

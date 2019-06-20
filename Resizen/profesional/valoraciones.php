@@ -31,7 +31,7 @@
             session_start();
             require("conexion.php");
             $con = conexion("resizen");
-            $consulta = "select id_residente,nombre,apellidos from residentes";
+            $consulta = "select id_residente,nombre,apellidos from residentes order by apellidos asc";
             $result = mysqli_query($con,$consulta);
             $col = mysqli_num_rows($result);
             if($col>0){
@@ -48,11 +48,8 @@
                             echo("<td>" . $datos['nombre'] . "</td>");
                             echo("<td>" . $datos['apellidos'] . "</td>");
                             echo("<td>
-                                <button onclick='mostrarvaloraciones(\"". $datos['id_residente'] ."\")'>Ver</button>
+                                <button onclick='mostrarvaloraciones(\"". $datos['id_residente'] ."\")'>Mostrar</button>
                             ");
-                            if($_SESSION['categoria']!="Auxiliar de enfermeria"){
-                                echo("<button onclick='crearvaloraciones(\"". $datos['id_residente'] ."\")'>Crear</button>");
-                            }
                             echo("</td>");
                         echo("</tr>");
                 }

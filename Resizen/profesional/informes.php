@@ -29,7 +29,7 @@
             sleep(1);
             require("conexion.php");
             $con = conexion("resizen");
-            $consulta = "select id_residente,nombre,apellidos from residentes;";
+            $consulta = "select id_residente,nombre,apellidos from residentes order by apellidos asc;";
             $result = mysqli_query($con,$consulta);
             $col = mysqli_num_rows($result);
             if($col>0){

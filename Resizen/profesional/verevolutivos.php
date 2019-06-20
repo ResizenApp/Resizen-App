@@ -31,7 +31,7 @@
             require("conexion.php");
             $con = conexion("resizen");
             $id = $_POST['id'];
-            $consulta = "select residentes.nombre,residentes.apellidos,evolutivos.id_evolutivo,evolutivos.turno,evolutivos.fecha from residentes inner join evolutivos where residentes.id_residente='$id';";
+            $consulta = "select residentes.nombre,residentes.apellidos,evolutivos.id_evolutivo,evolutivos.turno,evolutivos.fecha from residentes inner join evolutivos on residentes.id_residente=evolutivos.id_residente where residentes.id_residente='$id';";
             $result = mysqli_query($con,$consulta);
             $col = mysqli_num_rows($result);
             if($col>0){
@@ -51,12 +51,15 @@
                         echo("<td>" . $datos['turno'] . "</td>");
                         echo("<td>" . $datos['fecha'] . "</td>");
                         echo("<td>
-                            <button onclick='detalleevolutivo(". $datos['id_evolutivo'] .")'>Detalles</button>
+                            <button onclick='detalleevolutivo(\"". $datos['id_evolutivo'] ."\")'>Detalles</button>
                         </td>");
                     echo("</tr>");
                 }
                 echo("</table></center><br><br>");
-                echo("<center><button class='boton' onclick='atrasevolutivo()'>Atras</button></center><br><br>");
+                echo("<center>
+                    <button onclick='crearevolutivo(\"". $id ."\")'>Crear</button>
+                    <button class='boton' onclick='atrasevolutivo()'>Atras</button>
+                </center><br><br>");
             }
             else{
                 echo("<center>

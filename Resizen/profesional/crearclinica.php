@@ -35,6 +35,7 @@
                         Patologia: <input type='text' name='pat' id='pat'><br><br>
                         Tratamiento: <input type='text' name='tra' id='tra'><br><br>
                         <input type='button' name='creaclinica' id='creaclinica' value='Crear' onclick='crea()'>
+                        <button onclick='atrasclinica()'>Atras</button>
                     </form>
                 ");
             ?>
